@@ -56,3 +56,11 @@ The following environment variables are required in the `backend/.env` file:
 - `CLOUDINARY_URL`: Cloudinary configuration (alternative to S3).
 - `OPENAI_API_KEY`: OpenAI API key for AI generation.
 - `REPLICATE_API_TOKEN`: Replicate API token for AI generation.
+
+## Features
+
+- **Home**: Photo upload drag-and-drop zone (placeholder).
+- **Auth**: Login and Sign Up pages.
+- **Dashboard**: Overview of connected social accounts and past reels.
+- **Preview**: Reel preview before posting.
+- **Settings**: Manage connected social media platforms.

@@ -4,7 +4,7 @@ AI-powered social media app that lets users upload trip photos, automatically ge
 
 ## Project Structure
 
-- `frontend/`: React application (scaffolded with `react-scripts`)
+- `frontend/`: Flutter application (Web & Mobile support)
 - `backend/`: Node.js/Express API
 
 ## Setup Instructions
@@ -28,7 +28,7 @@ AI-powered social media app that lets users upload trip photos, automatically ge
    npm run dev
    ```
 
-### Frontend
+### Frontend (Flutter)
 
 1. Navigate to the `frontend` directory:
    ```bash
@@ -36,12 +36,11 @@ AI-powered social media app that lets users upload trip photos, automatically ge
    ```
 2. Install dependencies:
    ```bash
-   npm install
+   flutter pub get
    ```
-3. Start the React development server:
-   ```bash
-   npm start
-   ```
+3. Run the app:
+   - For Web: `flutter run -d chrome`
+   - For Mobile: Ensure an emulator/device is connected and run `flutter run`
 
 ## Environment Variables (.env)
 

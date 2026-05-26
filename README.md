@@ -11,10 +11,17 @@ AI-powered travel social media app that transforms your trip photos into cinemat
 5. **🎵 Trend Syncing**: Real-time integration with trending audio from Instagram Reels and TikTok.
 6. **🌍 Travel-First Identity**: Features include automatic packing lists, destination tagging, and travel stats (countries visited, miles traveled).
 7. **🔁 Memories Mode**: Automated throwback reels for trip anniversaries.
+8. **📈 Smart Recommendations**: AI-driven posting strategy. Recommends the best platform (Instagram vs TikTok), optimal posting time, and trending hashtags based on live social media data.
+
+## 📸 Screenshots (Placeholders)
+
+| Home (One-Tap) | Dashboard (Travel Journal) |
+| --- | --- |
+| ![Home Screen](https://via.placeholder.com/300x600?text=Home+Screen) | ![Dashboard Screen](https://via.placeholder.com/300x600?text=Dashboard+Screen) |
 
 ## Project Structure
 
-- `frontend/`: Flutter application (Web & Mobile support)
+- `frontend/`: Flutter application (Web & Mobile support, Dark Mode)
 - `backend/`: Node.js/Express API (MongoDB + Mongoose)
 
 ## Setup Instructions
@@ -51,7 +58,7 @@ AI-powered travel social media app that transforms your trip photos into cinemat
 
 ## Tech Stack
 
-- **Frontend**: Flutter (Dark Mode, Instagram-inspired UI)
+- **Frontend**: Flutter (Instagram-inspired Dark UI)
 - **Backend**: Node.js, Express, Mongoose
 - **AI**: OpenAI/Replicate (Vibe & Narrative detection)
 - **Storage**: AWS S3 / Cloudinary

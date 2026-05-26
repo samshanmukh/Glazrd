@@ -7,90 +7,112 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        title: const Text('Travel Journal'),
         actions: [
-          IconButton(
-            onPressed: () => Navigator.pushNamed(context, '/settings'),
-            icon: const Icon(Icons.settings_outlined),
-          ),
-          const SizedBox(width: 8),
+          IconButton(onPressed: () => Navigator.pushNamed(context, '/settings'), icon: const Icon(Icons.settings_outlined)),
         ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          const Text(
-            'Connected Platforms',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 16),
-          _buildPlatformCard('Instagram', true),
-          _buildPlatformCard('TikTok', true),
-          _buildPlatformCard('Facebook', false),
-          const SizedBox(height: 40),
-          const Text(
-            'Recent Reels',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 16),
-          GridView.count(
-            crossAxisCount: 2,
+          // Travel Stats Card
+          _buildStatsCard(),
+          const SizedBox(height: 32),
+          const Text('Group Trips', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 12),
+          _buildGroupTripItem('Europe Summer 24', '4 friends • 128 photos'),
+          const SizedBox(height: 32),
+          const Text('Memories', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 12),
+          _buildMemoryReelCard('Tokyo 2023', 'One year ago today'),
+          const SizedBox(height: 32),
+          const Text('Your Feed', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 12),
+          // Grid of past reels (Journal style)
+          GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            mainAxisSpacing: 12,
-            crossAxisSpacing: 12,
-            childAspectRatio: 0.7,
-            children: [
-              _buildReelThumbnail('Hawaii Trip', '2 days ago'),
-              _buildReelThumbnail('Paris 2023', '1 week ago'),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPlatformCard(String name, bool isConnected) {
-    return Card(
-      color: const Color(0xFF121212),
-      margin: const EdgeInsets.only(bottom: 12),
-      child: ListTile(
-        title: Text(name),
-        trailing: Text(
-          isConnected ? 'Connected' : 'Not Connected',
-          style: TextStyle(color: isConnected ? Colors.blue : Colors.white38),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildReelThumbnail(String title, String date) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFF121212),
-        borderRadius: BorderRadius.circular(8),
-        image: const DecorationImage(
-          image: NetworkImage('https://via.placeholder.com/150'),
-          fit: BoxFit.cover,
-          opacity: 0.5,
-        ),
-      ),
-      child: Stack(
-        children: [
-          Positioned(
-            bottom: 10,
-            left: 10,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-                Text(date, style: const TextStyle(fontSize: 10, color: Colors.white70)),
-              ],
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 4,
+              mainAxisSpacing: 4,
             ),
+            itemCount: 9,
+            itemBuilder: (context, index) => Container(color: Colors.white10),
           ),
-          const Center(child: Icon(Icons.play_arrow, size: 48)),
         ],
       ),
+    );
+  }
+
+  Widget _buildStatsCard() {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.blue.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.blue.withOpacity(0.3)),
+      ),
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _StatItem(label: 'Countries', value: '12'),
+          _StatItem(label: 'Trips', value: '28'),
+          _StatItem(label: 'Reels', value: '45'),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildGroupTripItem(String name, String subtitle) {
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      leading: const CircleAvatar(backgroundColor: Colors.white10, child: Icon(Icons.people_outline)),
+      title: Text(name),
+      subtitle: Text(subtitle, style: const TextStyle(color: Colors.white54)),
+      trailing: const Icon(Icons.chevron_right, color: Colors.white24),
+    );
+  }
+
+  Widget _buildMemoryReelCard(String title, String subtitle) {
+    return Container(
+      height: 120,
+      decoration: BoxDecoration(
+        color: Colors.white10,
+        borderRadius: BorderRadius.circular(12),
+        image: const DecorationImage(
+          image: NetworkImage('https://via.placeholder.com/400x120'),
+          fit: BoxFit.cover,
+          opacity: 0.3,
+        ),
+      ),
+      child: Center(
+        child: ListTile(
+          title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+          subtitle: Text(subtitle, style: const TextStyle(color: Colors.white70)),
+          trailing: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue, padding: const EdgeInsets.symmetric(horizontal: 12)),
+            child: const Text('Generate Reel', style: TextStyle(fontSize: 12)),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _StatItem extends StatelessWidget {
+  final String label;
+  final String value;
+  const _StatItem({required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(value, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        Text(label, style: const TextStyle(fontSize: 12, color: Colors.white54)),
+      ],
     );
   }
 }

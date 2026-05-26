@@ -1,11 +1,21 @@
 # Glazrd
 
-AI-powered social media app that lets users upload trip photos, automatically generates a cinematic reel from them using AI, and posts it directly to their connected Instagram, Facebook, and TikTok accounts.
+AI-powered travel social media app that transforms your trip photos into cinematic reels with zero effort. Unlike generic AI video tools, Glazrd is built exclusively for travelers.
+
+## 🚀 Unique Differentiators
+
+1. **🧠 Vibe Detection**: No style picking required. Glazrd analyzes your photos automatically to detect the vibe (Beach, Moody Mountains, Chaotic City) and syncs music and transitions to match.
+2. **👥 Group Trip Mode**: Collaborative albums for your group trips. Everyone contributes photos, and the AI merges them into one narrative reel from multiple perspectives.
+3. **📍 Location-Aware Storytelling**: GPS-based narrative structure. The app automatically organizes your reel as a chronological journey: "Day 1 Shibuya → Day 2 Kyoto".
+4. **⚡ One-Tap Flow**: Minimalist UX. The product is simplicity: Open App → Drop Photos → Post.
+5. **🎵 Trend Syncing**: Real-time integration with trending audio from Instagram Reels and TikTok.
+6. **🌍 Travel-First Identity**: Features include automatic packing lists, destination tagging, and travel stats (countries visited, miles traveled).
+7. **🔁 Memories Mode**: Automated throwback reels for trip anniversaries.
 
 ## Project Structure
 
 - `frontend/`: Flutter application (Web & Mobile support)
-- `backend/`: Node.js/Express API
+- `backend/`: Node.js/Express API (MongoDB + Mongoose)
 
 ## Setup Instructions
 
@@ -19,10 +29,7 @@ AI-powered social media app that lets users upload trip photos, automatically ge
    ```bash
    npm install
    ```
-3. Copy `.env.example` to `.env` and fill in the required API keys:
-   ```bash
-   cp .env.example .env
-   ```
+3. Copy `.env.example` to `.env` and fill in the required API keys.
 4. Start the server:
    ```bash
    npm run dev
@@ -40,27 +47,11 @@ AI-powered social media app that lets users upload trip photos, automatically ge
    ```
 3. Run the app:
    - For Web: `flutter run -d chrome`
-   - For Mobile: Ensure an emulator/device is connected and run `flutter run`
+   - For Mobile: `flutter run`
 
-## Environment Variables (.env)
+## Tech Stack
 
-The following environment variables are required in the `backend/.env` file:
-
-- `PORT`: Port number for the backend server.
-- `MONGODB_URI`: Connection string for MongoDB.
-- `JWT_SECRET`: Secret key for JWT authentication.
-- `INSTAGRAM_CLIENT_ID`, `INSTAGRAM_CLIENT_SECRET`: Instagram API credentials.
-- `FACEBOOK_CLIENT_ID`, `FACEBOOK_CLIENT_SECRET`: Facebook API credentials.
-- `TIKTOK_CLIENT_ID`, `TIKTOK_CLIENT_SECRET`: TikTok API credentials.
-- `AWS_S3_BUCKET`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`: AWS S3 configuration for photo storage.
-- `CLOUDINARY_URL`: Cloudinary configuration (alternative to S3).
-- `OPENAI_API_KEY`: OpenAI API key for AI generation.
-- `REPLICATE_API_TOKEN`: Replicate API token for AI generation.
-
-## Features
-
-- **Home**: Photo upload drag-and-drop zone (placeholder).
-- **Auth**: Login and Sign Up pages.
-- **Dashboard**: Overview of connected social accounts and past reels.
-- **Preview**: Reel preview before posting.
-- **Settings**: Manage connected social media platforms.
+- **Frontend**: Flutter (Dark Mode, Instagram-inspired UI)
+- **Backend**: Node.js, Express, Mongoose
+- **AI**: OpenAI/Replicate (Vibe & Narrative detection)
+- **Storage**: AWS S3 / Cloudinary

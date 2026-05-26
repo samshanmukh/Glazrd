@@ -6,76 +6,80 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Glazrd'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pushNamed(context, '/login'),
-            child: const Text('Log In', style: TextStyle(color: Colors.blue)),
-          ),
-          const SizedBox(width: 8),
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, '/signup'),
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      body: Stack(
+        children: [
+          // Background Video Placeholder or Gradient
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.transparent, Colors.black],
               ),
-              child: const Text('Sign Up'),
+            ),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Glazrd',
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, letterSpacing: -1),
+                  ),
+                  const Spacer(),
+                  const Text(
+                    'Drop photos. Get cinematic reels.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w200),
+                  ),
+                  const SizedBox(height: 40),
+                  GestureDetector(
+                    onTap: () {
+                      // Trigger One-Tap Flow
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 250,
+                      decoration: BoxDecoration(
+                        color: Colors.white10,
+                        borderRadius: BorderRadius.circular(24),
+                        border: Border.all(color: Colors.white24, width: 2),
+                      ),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.bolt, size: 64, color: Colors.blue),
+                          SizedBox(height: 16),
+                          Text('Upload & Generate', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                          Text('AI will detect vibe & sync trends', style: TextStyle(color: Colors.white54)),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  TextButton.icon(
+                    onPressed: () {},
+                    icon: const Icon(Icons.group_add_outlined),
+                    label: const Text('Start a Group Trip Album'),
+                    style: TextButton.styleFrom(foregroundColor: Colors.white70),
+                  ),
+                  const SizedBox(height: 60),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: 40,
+            right: 20,
+            child: IconButton(
+              onPressed: () => Navigator.pushNamed(context, '/dashboard'),
+              icon: const Icon(Icons.person_outline, size: 28),
             ),
           ),
         ],
-      ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Create cinematic reels from your trip photos',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
-              ),
-              const SizedBox(height: 60),
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  width: 350,
-                  height: 350,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF121212),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.white12),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.add_photo_alternate_outlined, size: 64, color: Colors.blue),
-                      const SizedBox(height: 20),
-                      const Text(
-                        'Drag & drop photos or click to browse',
-                        style: TextStyle(color: Colors.white70),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        'Supports JPG, PNG up to 10MB each',
-                        style: TextStyle(color: Colors.white30, fontSize: 12),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 40),
-              SizedBox(
-                width: 200,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Start Creating'),
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

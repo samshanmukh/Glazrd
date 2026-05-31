@@ -1,0 +1,22 @@
+# Flutter
+frontend/build/
+frontend/.dart_tool/
+frontend/.packages
+frontend/.pub-cache/
+frontend/.pub/
+frontend/ios/Flutter/Generated.xcconfig
+frontend/ios/Flutter/flutter_export_environment.sh
+frontend/ios/Flutter/Flutter.podspec
+frontend/android/local.properties
+frontend/linux/flutter/generated_plugins.cmake
+frontend/macos/Flutter/Generated.xcconfig
+frontend/windows/flutter/generated_plugins.cmake
+
+# Node
+backend/node_modules/
+backend/.env
+backend/uploads/
+
+# General
+.DS_Store
+*.log
